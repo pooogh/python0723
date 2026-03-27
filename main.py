@@ -112,3 +112,67 @@ for i in range(n):
 import random
 rand = [random.randint(0, 10) for i in range(10)]
 print(rand)
+
+# словари (объекты)
+dict_1 = dict()
+dict_2 = {} # неоч
+# [2, 2, 2] -> set() -> {2}
+dict_3 = {
+    'k1': 'v1',
+    'k2': 'v2'
+}
+dict_4 = dict([('k1', 'v1'), ('k2', 'v2')])
+dict_5 = dict(zip(['k1', 'k2', 'k3'], ['v1', 'v2', 'v3']))
+
+dict_5['k1'] # -> 'v1'
+
+try:
+    print(dict_5['k33'])
+except: # аналог  catch(e)
+    print('sorry')
+
+dict_5.get('k23', 0) # default None
+
+# создать 2 словаря разными способами:
+# 1. словарь с данными о польз (имя, юз, email)
+# 2. словарь с настройками профиля (тема, увед, язык)
+dict_user = {
+    'name': 'Andrysha',
+    'user_name': 'razriv_O4K',
+    'email': 'razriv_O4K@gmail.com'
+}
+
+settings = dict(zip(['theme','notification','language'],['dark','1','RU']))
+print (dict_user, settings, sep='\n')
+
+# crud 
+settings = {**settings, **{'font': 'Times'}}
+print(settings)
+settings['new_key'] = 'new_value'
+print(settings)
+
+del settings['new_key']
+print(settings)
+value = settings.pop('font3', 'key not found')
+print(value)
+
+settings['font'] = 'Arial'
+print(settings)
+
+print('theme' in settings)
+print('key' not in settings)
+
+print(list(settings.keys()))
+print(settings.values())
+print(settings.items())
+
+# генераторы
+dict_6 = {i:input() for i in [1, 2, 3]}
+print(dict_6)
+dict_7 = {i[0]:i[1] for i in [['eat','eat2'],['ea1','ea2']]}
+print(dict_7)
+
+# на вход идет строка, необходимо составить словарь, где ключ - слово, а знач - кол-во
+# повторов слова в строке
+# вход: apple baNana Banana apple orange
+# выход: {apple: 2, banana: 2, orange: 1}
